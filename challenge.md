@@ -262,11 +262,16 @@ career here, you'll have to answer the following:
 - What, in your opinion, is an important part of code reviews? That is, what is
   something you pay attention to when you review code, and that you appreciate
   when others do the same for your code?
+  
 - We have an awful lot of computers here, and it gets pretty confusing with
   slightly different things running on all of them. How could containers help us
   improve this situation?
 
 Answer both of these questions (baseline ~5 sentences) here in text.
+
+Answer to Q1: I think the most important part of review a student's codes is to know that it runs as expected without error, and the sytle is good with enough comments to help others understand. For code-reviewing a finished module, the code should run without error locally at other computers, no matter what the local systems and environments are. All dependencies should be contained with the codes. The coder should ensures that the modules are dockered properly and ready to ship. And the code reviewers can confirm it on another computer. It is also good practice to include unittest module so reviewer can test-run or customize it for further testing. 
+
+Answer to Q2: The containers make sure that the codes are packaged in a somewhat isolated environment with required dependencies so they are portable and executable on any system platform, no matter Linux or Windows. A window user can run a Linux container by using virtual machine. Because of this, applications can be more easily distributed. With the help of container program such as docker, we can separate our applications from our computer configurations and ship, test, and deploy our applicaiton more quickly. 
 
 ### Part 8 - Turn it in!
 
