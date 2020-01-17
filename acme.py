@@ -1,22 +1,13 @@
-""" part1:
-create a class object to organize Acme Corp products
-
-- `name` (string with no default)
-- `price` (integer with default value 10)
-- `weight` (integer with default value 20)
-- `flammability` (float with default value 0.5)
-- `identifier` (integer, automatically genererated as a random (uniform) number
-  anywhere from 1000000 to 9999999, includisve)(inclusive).
+"""
+See readme.md for interpretation of this script
 """
 import sys
 from os import getcwd
-
 sys.path.append(getcwd())
-import numpy as np
-
+import random
 
 class Product:
-    ID = np.random.randint(1000000, 9999999)
+    ID = random.randint(1000000, 9999999)
 
     def __init__(self, name, identifier=ID, price=10, weight=20, flammability=0.5):
         self.name = name
@@ -62,20 +53,17 @@ class BoxingGlove(Product):
         else:
             self.punch = "OUCH!"
 
-import random
-
-adj = ["Awesome", "Shiny", "Impressive", "Portable", "Improved", "Edible"]
-noun = ["Anvil", "Catapult" "Disguise" "Mousetrap", "Cupcake", "Flipflops", "Kimwipes"]
 
 
 def generate_products(num_products=30):
+    adj = ["Awesome", "Shiny", "Impressive", "Portable", "Improved", "Edible"]
+    noun = ["Anvil", "Catapult" "Disguise" "Mousetrap", "Cupcake", "Flipflops", "Kimwipes"]
     products = []
 
     for item in range(0, num_products):
         prod_adj = random.sample(adj, 1)
         prod_noun = random.sample(noun, 1)
         newlist = prod_adj + prod_noun
-
         name = " ".join(newlist)
         price = random.randint(5, 100)
         weight = random.randint(5, 100)
@@ -87,5 +75,35 @@ def generate_products(num_products=30):
 
     return products
 
+def inventory_report(products):
+    print("ACME CORPORATION OFFICIAL INVENTORY REPORT")
+    def unique(input_list):
+        unique_list=[]
+        for x in input_list: 
+            if x not in unique_list: 
+                unique_list.append(x)
+        return unique_list 
+    prod_list = product.name
+    unique_prod_list = unique(prod_list)
+    print('Unique product list: ', unique_prod_list)
+    
 
-products = generate_products(20)
+    count = len(products.name)
+    price = 0
+    weight = 0
+    flammability = 0
+
+    for item in products:
+        price += price
+        weight += weight
+        flammability += flammability
+    average_price = price/count
+    average_weight = weight/count
+    average_flammability = flammability/count
+    print('Average price is', 'average_price')
+    print('Average weight is', 'average_weight')
+    print('Average flammability is', 'average_flammability')
+
+
+if __name__ == '__main__':
+    inventory_report(generate_products())
