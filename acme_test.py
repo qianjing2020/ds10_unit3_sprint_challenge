@@ -1,29 +1,16 @@
-import random
-import acme
+import unittest
+from acme import Product
+from acme_report import generate_products, ADJECTIVES, NOUNS
 
-adj = ["Awesome", "Shiny", "Impressive", "Portable", "Improved", "Edible"]
-noun = ["Anvil", "Catapult" "Disguise" "Mousetrap", "Cupcake", "Flipflops", "Kimwipes"]
-
-
-def generate_products(num_products=30):
-    products = []
-
-    for item in range(0, num_products):
-        prod_adj = random.sample(adj, 1)
-        prod_noun = random.sample(noun, 1)
-        newlist = prod_adj + prod_noun
-
-        name = " ".join(newlist)
-        price = random.randint(5, 100)
-        weight = random.randint(5, 100)
-        flammability = random.uniform(0.0, 2.5)
-
-        products = Product(
-            name=name, price=price, weight=weight, flammability=flammability
-        )
-
-    return products
+class AcmeProductTests(unittest.TestCase):
+    """Making sure Acme products are the tops!"""
+    def test_default_product_price(self):
+        """Test default product price being 10."""
+        prod = Product('Test Product')
+        self.assertEqual(prod.price, 10)
 
 
-products = generate_products(20)
+if __name__ == '__main__':
+    unittest.main()
+
 
