@@ -3,14 +3,19 @@ See readme.md for interpretation of this script
 """
 import sys
 from os import getcwd
+
 sys.path.append(getcwd())
+
+""" Part 1 and 2"""
 
 
 class Product:
     import random
+
     ID = random.randint(1000000, 9999999)
 
     def __init__(self, name, identifier=ID, price=10, weight=20, flammability=0.5):
+        # constructor for default values
         self.name = name
         self.identifier = identifier
         self.price = price
@@ -36,6 +41,9 @@ class Product:
             return "...BABOOM!"
 
 
+""" Part 3"""
+
+
 class BoxingGlove(Product):
     def __init__(self, name):
         self.name = name
@@ -48,10 +56,9 @@ class BoxingGlove(Product):
     def punch(self):
         x = self.weight
         if x < 5:
-            self.punch = "That tickles."
+            return "That tickles."
         elif x >= 5 and x < 15:
-            self.punch = "Hey that hurt!"
+            return "Hey that hurt!"
         else:
-            self.punch = "OUCH!"
-
+            return "OUCH!"
 

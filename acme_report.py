@@ -1,28 +1,27 @@
-from acme import Product
-import random
+""" Part 4 Generate products and generate reports"""
 
-""" generate products and generate reports"""
 import random
+from acme import Product
+
+ADJECTIVES = ["Awesome", "Shiny", "Impressive", "Portable", "Improved"]
+NOUNS = ["Anvil", "Catapult", "Disguise", "Mousetrap", "???"]
+
 
 def generate_products(num_products=30):
-    adj = ["Awesome", "Shiny", "Impressive", "Portable", "Improved", "Edible"]
-    noun = ["Anvil", "Catapult", "Disguise", "Mousetrap", "Cupcake", "Flipflops", "Kimwipes"]
-    products = []
+    products = []  # intialize a list for storing class objects
     i = 0
     while i < num_products:
-        prod_adj = random.sample(adj, 1)
-        prod_noun = random.sample(noun, 1)
-        newlist = prod_adj + prod_noun
-        name = " ".join(newlist)
+        name = " ".join(random.sample(ADJECTIVES, 1) + random.sample(NOUNS, 1))
         price = random.randint(5, 100)
         weight = random.randint(5, 100)
         flammability = random.uniform(0.0, 2.5)
-        products[i] = Product(
-            name=name, price=price, weight=weight, flammability=flammability
-        )
+        prod = "x" + str(i)
+        prod = Product(name=name, price=price, weight=weight, flammability=flammability)
+
+        products.append(prod)
         i += 1
 
-    return products
+    return products  # a list of class objects
 
 
 def inventory_report(products):
@@ -34,6 +33,7 @@ def inventory_report(products):
     flammability = 0
     count = 0
     i = 0
+
     while i < 30:
         name = products[i].name
         if name not in unique_list:
@@ -43,7 +43,7 @@ def inventory_report(products):
         flammability += products[i].flammability
         i += 1
     count = i
-    print("Unique product list: ", unique_list)
+    print("Unique product names: ", len(unique_list))
     average_price = price / count
     average_weight = weight / count
     average_flammability = flammability / count
@@ -55,3 +55,4 @@ def inventory_report(products):
 
 if __name__ == "__main__":
     inventory_report(generate_products())
+
